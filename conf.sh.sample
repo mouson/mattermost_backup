@@ -1,0 +1,37 @@
+DAY=$(date +"%Y%m%d")
+HOUR=$(date +"%H%M")
+# remote backup server ip address
+RHOST="127.0.0.1"
+# SSH Connect Setting
+SSH_KEY="/root/.ssh/id_rsa"
+SSH_USR="dbuser"
+SSH="ssh -o BatchMode=yes -i ${SSH_KEY}"
+SCP="scp -r -i ${SSH_KEY}"
+SSH_TEST_FILE="ssh_test.txt"
+# PostgreSql pg_dump path
+PG_DUMP_PATH="/usr/pgsql-9.5/bin/"
+# this script real path
+SCRIPT_DIR="/home/backup/mattermost_backup"
+# backup file temp path
+BACKUP_PATH="/tmp/mattermost"
+# which folder will backup. ex: opt/mattermost/files
+DATA_HOME="/opt/mattermost-data/"
+# remote backup file path
+REMOTE_BACKUP_PATH="/remove/backup/MattermostBackUp"
+# redmine database setting
+DB_HOST="127.0.0.1"
+DB_PORT="5432"
+DB_NAME="mattermost_db"
+DB_USER="mattermost_user"
+DB_PASS="mattermost_password"
+MODEL_BKP="mattermost"
+# backup file name setting
+DB_BACKUP_NAME="${MODEL_BKP}_pg_db.sql"
+BACKUP_PACKAGE_NAME="${MODEL_BKP}.tar.gz"
+BACKUP_DIR_NAME_="${MODEL_BKP}_"${DAY}"_"${HOUR}"_"
+BACKUP_SHASUM_NAME="${MODEL_BKP}.tar.gz.sha256sum"
+# 
+BACKUP_LIVE_day="1"
+BACKUP_LIVE_WEEK="14"
+BACKUP_LIVE_MONTH="60"
+COUNT=0

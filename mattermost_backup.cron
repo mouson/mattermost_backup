@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+BACKUP="$HOME/mattermost_backup/mattermost_backup.sh"
+DOM=$(date +%d);
+DOW=$(date +%u);
+TYPE="d";
+
+if   [ "${DOM}" == "01"  ]; then TYPE="m";
+elif [ "${DOW}" == "7" ]; then TYPE="w";
+fi;
+
+$BACKUP ${TYPE} > /dev/null 2>&1
+
+exit 0;
